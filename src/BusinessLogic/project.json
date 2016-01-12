@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "BusinessLogic Class Library",
+  "authors": [ "owner" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
+        "Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
+        "Microsoft.AspNet.Identity": "3.0.0-rc1-final",
+        "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-rc1-final"
+      },
+      "frameworkAssemblies": {
+        "System.Data": "4.0.0.0",
+        "System.Data.Entity": "4.0.0.0"
+      }
+    }
+  }
+}

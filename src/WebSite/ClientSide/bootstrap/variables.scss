@@ -1,0 +1,30 @@
+﻿$border-radius-small: 2px;
+$border-radius-base: 2px;
+$border-radius-large: 3px;
+
+//primary colors
+$brand-primary: #1976D2;
+$btn-primary-border: $brand-primary;
+
+//navbar
+$navbar-border-radius: 0;
+$navbar-default-bg: #1E88E5;
+$navbar-default-color: #fff;
+$navbar-default-link-color: #fff;
+$navbar-default-link-hover-color: lighten($navbar-default-bg, 45%);
+$navbar-default-brand-hover-color: $navbar-default-link-hover-color;
+$navbar-default-link-active-color: #fff;
+$navbar-default-border: $navbar-default-bg;
+
+//alerts
+$state-danger-bg: #FFDEE1;
+$state-danger-border: $state-danger-bg;
+$state-danger-text: #D46570;
+
+//panels
+$panel-body-padding: 20px;
+
+//modals
+$modal-backdrop-bg: #fff;
+$modal-title-padding: 15px 20px;
+$modal-inner-padding: $modal-title-padding;

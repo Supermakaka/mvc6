@@ -1,0 +1,36 @@
+﻿@model WebSite.ViewModels.Admin.UserFormViewModel
+
+<div asp-validation-summary="ValidationSummary.All"></div>
+
+<input asp-for="Id" type="hidden" />
+
+<div class="form-group">
+    <label asp-for="CompanyId"></label>
+    <select asp-for="CompanyId" asp-items="Model.Companies" class="form-control"></select>
+</div>
+<div class="form-group">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="Email"></label>
+    <input asp-for="Email" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="Password"></label>
+    <input asp-for="Password" class="form-control" />
+</div>
+<div class="form-group">
+    <label asp-for="ConfirmPassword"></label>
+    <input asp-for="ConfirmPassword" class="form-control" />
+</div>
+<div class="checkbox">
+    <label>
+        <input asp-for="Disabled" />
+        @Html.DisplayNameFor(m => m.Disabled)
+    </label>
+</div>

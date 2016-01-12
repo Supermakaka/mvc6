@@ -1,0 +1,23 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "bootstrap-sass": "3.3.6",
+    "jquery": "2.1.4",
+    "jquery-validation": "1.14.0",
+    "jquery-validation-unobtrusive": "3.2.4",
+    "moment": "2.10.6",
+    "font-awesome": "4.4.0",
+    "iCheck": "1.0.2",
+    "animate.css": "3.5.0",
+    "pnotify": "3.0.0",
+    "tooltipster": "3.3.0",
+    "datatables": "1.10.10",
+    "handlebars": "4.0.4",
+    "throttle-debounce": "0.1.1",
+    "bootstrap-datepicker": "1.5.0",
+    "bootstrap-daterangepicker": "2.1.13",
+    "open-iconic": "*",
+    "SpinKit": "1.2.5"
+  }
+}
