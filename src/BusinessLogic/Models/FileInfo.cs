@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Models
 {
-    public class FileContext
+    public class FileInfo
     {
         public int Id { get; set; }
 

@@ -195,7 +195,7 @@ namespace BusinessLogic.Migrations
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("BusinessLogic.Models.UserOrder", b =>
+            modelBuilder.Entity("BusinessLogic.Models.Order", b =>
                 {
                     b.HasOne("BusinessLogic.Models.User")
                         .WithMany()
