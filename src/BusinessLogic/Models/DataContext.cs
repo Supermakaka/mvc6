@@ -16,7 +16,7 @@ namespace BusinessLogic.Models
     {
         public DbSet<Company> Companies { get; set; }
 
-        public DbSet<UserOrder> UserOrders { get; set; }
+        public DbSet<Order> UserOrders { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) { }
 
@@ -44,7 +44,7 @@ namespace BusinessLogic.Models
 
         DbSet<Company> Companies { get; set; }
 
-        DbSet<UserOrder> UserOrders { get; set; }
+        DbSet<Order> UserOrders { get; set; }
 
         DbSet<User> Users { get; set; }
 
