@@ -35,6 +35,7 @@ namespace BusinessLogic.Models
         public int IsProductAvilable { get; set; }
 
         public virtual ICollection<Product_FileInfo> Pictures { get; set; }
+        public ICollection<Product_ProductPriceHistory> Products { get; set; }
     }
 
     public class Product_FileInfo
@@ -44,5 +45,14 @@ namespace BusinessLogic.Models
 
         public int FileId { get; set; }
         public virtual FileInfo File { get; set; }
+    }
+
+    public class Product_ProductPriceHistory
+    {
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+
+        public int ProductPriceHistorytId { get; set; }
+        public ProductPriceHistory ProductPriceHistory { get; set; }
     }
 }
