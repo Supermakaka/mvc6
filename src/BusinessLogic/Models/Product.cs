@@ -40,15 +40,19 @@ namespace BusinessLogic.Models
 
     public class Product_FileInfo
     {
+        public int Id { get; set; }
+
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        public int FileId { get; set; }
-        public virtual FileInfo File { get; set; }
+        public int FileInfoId { get; set; }
+        public virtual FileInfo FileInfo { get; set; }
     }
 
     public class Product_ProductPriceHistory
     {
+        public int Id { get; set; }
+
         public int ProductId { get; set; }
         public Product Product { get; set; }
 

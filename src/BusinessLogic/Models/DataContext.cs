@@ -18,6 +18,20 @@ namespace BusinessLogic.Models
 
         public DbSet<Order> UserOrders { get; set; }
 
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<FileInfo> FileInfos { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<FileType> FileTypes { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<State> States { get; set; }
+
+        public DbSet<SubCategory> SubCategories { get; set; }
+
         public DataContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -31,6 +45,7 @@ namespace BusinessLogic.Models
             builder.Entity<IdentityUserLogin<int>>().ToTable("UserLogin");
             builder.Entity<IdentityUserRole<int>>().ToTable("UserRole");
             builder.Entity<IdentityRoleClaim<int>>().ToTable("RoleClaim");
+
         }
     }
 

@@ -18,6 +18,6 @@ namespace BusinessLogic.Models
 
         [Required]
         public int FileTypeId { get; set; }
-        public FileType FileType { get; set; }
+        public FileType FileTypes { get; set; }
     }
 }
