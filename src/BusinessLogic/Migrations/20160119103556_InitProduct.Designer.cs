@@ -8,9 +8,10 @@ using BusinessLogic.Models;
 namespace BusinessLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20160119103556_InitProduct")]
+    partial class InitProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -32,51 +33,9 @@ namespace BusinessLogic.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreateDate");
-
-                    b.Property<bool>("Deleted");
-
                     b.Property<string>("Name");
 
                     b.Property<decimal>("Price");
-
-                    b.Property<int>("ProductCategoryId");
-
-                    b.Property<DateTime>("UpdateDate");
-
-                    b.HasKey("Id");
-                });
-
-            modelBuilder.Entity("BusinessLogic.Models.ProductCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreateDate");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("Name");
-
-                    b.Property<DateTime>("UpdateDate");
-
-                    b.HasKey("Id");
-                });
-
-            modelBuilder.Entity("BusinessLogic.Models.ProductSubCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreateDate");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("ProductCategoryId");
-
-                    b.Property<DateTime>("UpdateDate");
 
                     b.HasKey("Id");
                 });
@@ -240,20 +199,6 @@ namespace BusinessLogic.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.HasAnnotation("Relational:TableName", "UserRole");
-                });
-
-            modelBuilder.Entity("BusinessLogic.Models.Product", b =>
-                {
-                    b.HasOne("BusinessLogic.Models.ProductCategory")
-                        .WithMany()
-                        .HasForeignKey("ProductCategoryId");
-                });
-
-            modelBuilder.Entity("BusinessLogic.Models.ProductSubCategory", b =>
-                {
-                    b.HasOne("BusinessLogic.Models.ProductCategory")
-                        .WithMany()
-                        .HasForeignKey("ProductCategoryId");
                 });
 
             modelBuilder.Entity("BusinessLogic.Models.User", b =>
