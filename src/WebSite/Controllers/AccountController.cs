@@ -23,21 +23,18 @@ namespace WebSite.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
-        private ICompanyService companyService;
 
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             IEmailSender emailSender,
-            ISmsSender smsSender,
-            ICompanyService companyService
+            ISmsSender smsSender
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
-            this.companyService = companyService;
         }
 
         //

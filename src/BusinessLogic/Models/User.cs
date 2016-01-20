@@ -11,20 +11,13 @@ namespace BusinessLogic.Models
     {
         public bool Disabled { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
-
-        public virtual int? CompanyId { get; set; }
-
-        public virtual Company Company { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public virtual int? UserId { get; set; }
-        public virtual Address Address { get; set; }
-
         public DateTime CreateDate { get; set; }
+
+        public ICollection<UserOrder> Orders { get; set; }
 
         public User() : base()
         {

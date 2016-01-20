@@ -19,6 +19,11 @@ namespace BusinessLogic.Services
 
         #region Public 
 
+        public IQueryable<Product> GetAllNotDeleted()
+        {
+            return base.GetMany(s => !s.Deleted);
+        }
+
         public IQueryable<ProductCategory> GetAllProductCategories()
         {
             return dataContext.ProductCategories.Where(s => !s.Deleted);
@@ -40,6 +45,7 @@ namespace BusinessLogic.Services
 
 public interface IProductService : IService<Product>
 {
+    IQueryable<Product> GetAllNotDeleted();
     IQueryable<ProductCategory> GetAllProductCategories();
     IQueryable<ProductSubCategory> GetAllProductSubCategories();
     IQueryable<ProductSubCategory> GetSubCategoriesByCategoryId(int productSubcategoryId);

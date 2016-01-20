@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Models
 {
-   public class Order
+   public class UserOrder
     {
         public int Id { get; set; }
 
@@ -18,9 +18,6 @@ namespace BusinessLogic.Models
         public int Price { get; set; }
 
         public string Description { get; set; }
-
-        public int? ShipAddressId { get; set; }
-        public virtual Address ShipAddress { get; set; }
 
         public string TrackingNumber { get; set; }
 

@@ -8,9 +8,10 @@ using BusinessLogic.Models;
 namespace BusinessLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20160120084359_InitFileInfo")]
+    partial class InitFileInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -54,18 +55,14 @@ namespace BusinessLogic.Migrations
 
                     b.Property<bool>("Deleted");
 
-                    b.Property<int>("ItemsCount");
-
                     b.Property<string>("Name")
                         .IsRequired();
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("ProductSubCategoryId");
+                    b.Property<int>("ProductCategoryId");
 
                     b.Property<DateTime>("UpdateDate");
-
-                    b.Property<bool>("Visible");
 
                     b.HasKey("Id");
                 });
@@ -284,9 +281,9 @@ namespace BusinessLogic.Migrations
 
             modelBuilder.Entity("BusinessLogic.Models.Product", b =>
                 {
-                    b.HasOne("BusinessLogic.Models.ProductSubCategory")
+                    b.HasOne("BusinessLogic.Models.ProductCategory")
                         .WithMany()
-                        .HasForeignKey("ProductSubCategoryId");
+                        .HasForeignKey("ProductCategoryId");
                 });
 
             modelBuilder.Entity("BusinessLogic.Models.ProductSubCategory", b =>

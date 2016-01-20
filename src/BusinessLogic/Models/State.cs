@@ -10,7 +10,5 @@ namespace BusinessLogic.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public virtual ICollection<Address> Addresses { get; set; }
     }
 }

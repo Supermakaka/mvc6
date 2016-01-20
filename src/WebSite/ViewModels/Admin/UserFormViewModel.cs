@@ -54,10 +54,5 @@ namespace WebSite.ViewModels.Admin
 
         public UserFormViewModel()
         { }
-        
-        public UserFormViewModel(IList<Company> companies)
-        {
-            Companies = companies.ToSelectListItems(r => r.Name, r => r.Id, true);
-        }
     }
 }

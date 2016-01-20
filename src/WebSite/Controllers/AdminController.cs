@@ -24,15 +24,13 @@ namespace WebSite.Controllers
         private UserManager<User> userManager;
         private RoleManager<Role> roleManager;
         private IUserService userService;
-        private ICompanyService companyService;
         private IUserOrderService orderService;
 
-        public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager, IUserService userService, ICompanyService companyService, IUserOrderService orderService)
+        public AdminController(UserManager<User> userManager, RoleManager<Role> roleManager, IUserService userService, IUserOrderService orderService)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.userService = userService;
-            this.companyService = companyService;
             this.orderService = orderService;
         }
 
@@ -45,7 +43,7 @@ namespace WebSite.Controllers
 
         public IActionResult UserListAjax(IDataTablesRequest request)
         {
-            var users = userService.GetAllWithCompanies();
+            var users = userService.GetAll();
 
             var res = request.ApplyToQuery(users, opt => opt
                 .ForColumn("Email")
@@ -54,10 +52,6 @@ namespace WebSite.Controllers
                     .EnableGlobalSearch()
                 .ForColumn("LastName")
                     .EnableGlobalSearch()
-                .ForColumn("CompanyName")
-                    .MapToProperty(u => u.Company.Name)
-                    .EnableGlobalSearch()
-                    .IgnoreWhenSorting()
                 .ForColumn("Role")
                     .SearchUsing((u, val) => u.Roles.Any(r => r.RoleId == int.Parse(val)))
                     .IgnoreWhenSorting()
@@ -73,19 +67,6 @@ namespace WebSite.Controllers
         public IActionResult CompanyList(int? page)
         {
             return View();
-        }
-
-        public IActionResult CompanyListAjax(IDataTablesRequest request)
-        {
-            var companies = companyService.GetAll();
-
-            var res = request.ApplyToQuery(companies);
-
-            var model = Mapper.Map<IEnumerable<Company>, IEnumerable<CompanyListDatatableViewModel>>(res.QueryFiltered);
-
-            var response = DataTablesResponse.Create(request, res.TotalRecords, res.TotalRecordsFiltered, model);
-
-            return new DataTablesJsonResult(response, true);
         }
 
         [AutoMap(typeof(User), typeof(UserListDatatableViewModel))]
@@ -117,11 +98,7 @@ namespace WebSite.Controllers
 
         public IActionResult CreateUser()
         {
-            var companies = companyService.GetAll().ToList();
-
-            var model = new UserFormViewModel(companies);
-
-            return PartialView(model);
+            return PartialView(new UserFormViewModel());
         }
 
         [HttpPost]
@@ -132,7 +109,6 @@ namespace WebSite.Controllers
                 var newUser = new User();
 
                 newUser.UserName = model.Email;
-                newUser.CompanyId = model.CompanyId;
                 newUser.FirstName = model.FirstName;
                 newUser.LastName = model.LastName;
                 newUser.Email = model.Email;
@@ -152,16 +128,16 @@ namespace WebSite.Controllers
                 CollectIdentityErrors(result);
             }
 
-            var m = new UserFormViewModel(companyService.GetAll().ToList());
+            var m = new UserFormViewModel();
 
             return PartialView(m);
         }
 
         public IActionResult EditUser(int id)
         {
-            var user = userService.GetByIdWithCompany(id);
+            var user = userService.GetById(id);
 
-            var model = Mapper.Map(user, new UserFormViewModel(companyService.GetAll().ToList()));
+            var model = Mapper.Map(user, new UserFormViewModel());
 
             return PartialView(model);
         }
@@ -174,7 +150,6 @@ namespace WebSite.Controllers
                 var userToEdit = userManager.FindByIdAsync(model.Id.ToString()).Result;
 
                 userToEdit.UserName = model.Email;
-                userToEdit.CompanyId = model.CompanyId;
                 userToEdit.FirstName = model.FirstName;
                 userToEdit.LastName = model.LastName;
                 userToEdit.Email = model.Email;
@@ -199,73 +174,9 @@ namespace WebSite.Controllers
                 CollectIdentityErrors(result);
             }
 
-            var m = new UserFormViewModel(companyService.GetAll().ToList());
+            var m = new UserFormViewModel();
 
             return PartialView(m);
-        }
-
-        public IActionResult CreateCompany()
-        {
-            return PartialView();
-        }
-
-        [HttpPost]
-        public IActionResult CreateCompany(CompanyFormViewModel model)
-        {
-            if (!ModelState.IsValid)
-                return PartialView(model);
-
-            var newCompany = new Company();
-
-            newCompany.Name = model.Name;
-
-            companyService.Add(newCompany);
-
-            return Json(new { success = true });
-        }
-
-        public IActionResult EditCompany(int id)
-        {
-            var company = companyService.GetById(id);
-
-            var model = Mapper.Map<Company, CompanyFormViewModel>(company);
-
-            return PartialView(model);
-        }
-
-        [HttpPost]
-        public IActionResult EditCompany(CompanyFormViewModel model)
-        {
-            if (!ModelState.IsValid)
-                return PartialView(model);
-            
-            var companyToEdit = companyService.GetById(model.Id.Value);
-
-            companyToEdit.Name = model.Name;
-
-            companyService.Update(companyToEdit);
-
-            return Json(new { success = true });
-        }
-
-        public IActionResult ConfirmDeleteCompany(int id)
-        {
-            var company = companyService.GetById(id);
-
-            var model = Mapper.Map<Company, CompanyFormViewModel>(company);
-
-            return PartialView(model);
-        }
-
-        [HttpPost]
-        public IActionResult DeleteCompany(int id)
-        {
-            if (userService.GetMany(u => u.CompanyId == id).Count() > 0)
-                return Json(new { success = false, message = "Cannot delete company because company has users." });
-
-            companyService.Delete(companyService.GetById(id));
-
-            return Json(new { success = true });            
         }
 
         private void CollectIdentityErrors(IdentityResult result)

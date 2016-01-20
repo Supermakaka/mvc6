@@ -14,25 +14,15 @@ namespace BusinessLogic.Models
 {
     public class DataContext : IdentityDbContext<User, Role, int>, IDataContext, IDisposable
     {
-        public DbSet<Company> Companies { get; set; }
-
-        public DbSet<Order> UserOrders { get; set; }
-
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<UserOrder> UserOrders { get; set; }
 
         public DbSet<FileInfo> FileInfos { get; set; }
-
-        public DbSet<Category> Categories { get; set; }
 
         public DbSet<FileType> FileTypes { get; set; }
 
         public DbSet<Product> Products { get; set; }
 
         public DbSet<State> States { get; set; }
-
-        public DbSet<SubCategory> SubCategories { get; set; }
-
-        public DbSet<Product> Products { get; set; }
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
@@ -62,10 +52,8 @@ namespace BusinessLogic.Models
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
-
-        DbSet<Company> Companies { get; set; }
-
-        DbSet<Order> UserOrders { get; set; }
+        
+        DbSet<UserOrder> UserOrders { get; set; }
 
         DbSet<User> Users { get; set; }
 

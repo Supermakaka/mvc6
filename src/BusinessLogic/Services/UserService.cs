@@ -23,23 +23,14 @@ namespace BusinessLogic.Services
             dataContext.SaveChanges();
         }
 
-        public User GetByIdWithCompany(int id)
-        {
-            return dataContext.Users.Where(u => u.Id == id).Include(u => u.Company).Single();
-        }
-
         public IQueryable<User> GetAllWithCompanies()
         {
-            return dataContext.Users.Include(u => u.Company);
+            return dataContext.Users;
         }   
     }
 
     public interface IUserService : IService<User>
     {
         void DisableOrEnable(User user);
-
-        User GetByIdWithCompany(int id);
-
-        IQueryable<User> GetAllWithCompanies();
     }
 }

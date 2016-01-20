@@ -138,7 +138,6 @@ namespace WebSite
 
             //Business Logic
             services.AddScoped<IDataContext, DataContext>(serviceProvider => serviceProvider.GetService<DataContext>());
-            services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserOrderService, UserOrderService>();
             services.AddScoped<IProductService, ProductService>();

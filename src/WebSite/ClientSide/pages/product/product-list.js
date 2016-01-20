@@ -15,7 +15,7 @@ var table;
 
 function initTable() {
     table.DataTable({
-        ajax: { url: '/Admin/UserListAjax' },
+        ajax: { url: '/Product/AdminProductListAjax' },
         columnDefs: [
             { 'width': "10%", 'targets': [0] }
         ],
@@ -100,7 +100,7 @@ function refreshTable(resetPaging) {
 
 module.exports.onReady = function (t) {
     table = t;
-     
+
     initTable();
     initActions();
 };

@@ -7,7 +7,6 @@ module.exports = {
     cache: true,
     entry: {
         common: ["site/site.js", "bootstrap/bootstrap.scss", "open-iconic/font/css/open-iconic-bootstrap.css", "./clientside/site/site.scss"],
-        companyList: ["./clientside/pages/admin/company-list.js"],
         userList: ["./clientside/pages/admin/user-list.js"],
     },
     output: {
@@ -22,7 +21,6 @@ module.exports = {
         loaders: [
             // make entry modules available as global variables- to reference them from HTML pages
             { test: /clientside\\.*site\.js$/, loader: 'expose?site' },
-            { test: /clientside\\.*company-list\.js$/, loader: 'expose?companyList' },
             { test: /clientside\\.*user-list\.js$/, loader: 'expose?userList' },
 
             // make jQuery module available as global variables ($ and jQuery)- to reference from HTML pages and other modules

@@ -26,5 +26,10 @@ namespace WebSite.Controllers
         {
             return View(viewModelFactory.InitAdminProductListViewModel());
         }
+
+        public IActionResult AdminProductListAjax()
+        {
+
+        }
     }
 }

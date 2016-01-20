@@ -9,23 +9,23 @@ namespace BusinessLogic.Services
 {
     using Models;
 
-    public class UserOrderService : BaseService<Order>, IUserOrderService
+    public class UserOrderService : BaseService<UserOrder>, IUserOrderService
     {
         public UserOrderService(IDataContext dataContext)
             : base(dataContext)
         {
         }
 
-        public IEnumerable<Order> GetAllOrdersWithUsers()
+        public IEnumerable<UserOrder> GetAllOrdersWithUsers()
         {
-            return dataContext.UserOrders.OfType<Order>()
+            return dataContext.UserOrders.OfType<UserOrder>()
                 .Include(u => u.User)
                 .ToList();
         }
     }
 
-    public interface IUserOrderService : IService<Order>
+    public interface IUserOrderService : IService<UserOrder>
     {
-        IEnumerable<Order> GetAllOrdersWithUsers();
+        IEnumerable<UserOrder> GetAllOrdersWithUsers();
     }
 }
