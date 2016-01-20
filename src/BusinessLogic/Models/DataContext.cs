@@ -32,6 +32,12 @@ namespace BusinessLogic.Models
 
         public DbSet<SubCategory> SubCategories { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+
+        public DbSet<ProductSubCategory> ProductSubCategories { get; set; }
+
         public DataContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -65,8 +71,14 @@ namespace BusinessLogic.Models
 
         DbSet<Role> Roles { get; set; }
 
-        int SaveChanges();
+        DbSet<Product> Products { get; set; }
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-    }
+        DbSet<ProductCategory> ProductCategories { get;set;}
+
+        DbSet<ProductSubCategory> ProductSubCategories { get; set; }
+
+    int SaveChanges();
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+}
 }

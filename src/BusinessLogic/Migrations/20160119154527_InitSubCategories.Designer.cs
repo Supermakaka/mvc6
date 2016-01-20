@@ -8,9 +8,10 @@ using BusinessLogic.Models;
 namespace BusinessLogic.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20160119154527_InitSubCategories")]
+    partial class InitSubCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -263,7 +264,7 @@ namespace BusinessLogic.Migrations
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("BusinessLogic.Models.Order", b =>
+            modelBuilder.Entity("BusinessLogic.Models.UserOrder", b =>
                 {
                     b.HasOne("BusinessLogic.Models.User")
                         .WithMany()

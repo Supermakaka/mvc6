@@ -20,6 +20,7 @@ namespace WebSite
     using Services;
     using Core.Config;
     using ViewModels.Mapping;
+    using Core.Helpers;
 
     public class Startup
     {
@@ -140,6 +141,8 @@ namespace WebSite
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserOrderService, UserOrderService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IViewModelFactory, ViewModelFactory>();
 
             //AutoMapper resolvers
             services.AddTransient<UserRoleListToStringResolver>();

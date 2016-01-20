@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Models
 {
-    public class Product
+    public class ProductSubCategory
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public decimal Price { get; set; }
 
         public bool Deleted { get; set; }
 
@@ -20,6 +18,6 @@ namespace BusinessLogic.Models
         public DateTime UpdateDate { get; set; }
 
         public int ProductCategoryId { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; } 
+        public virtual ProductCategory ProductCategory { get; set; }
     }
 }
