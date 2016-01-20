@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Services;
+﻿using BusinessLogic.Models;
+using BusinessLogic.Services;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using System;
@@ -29,7 +30,9 @@ namespace WebSite.Controllers
 
         public IActionResult AdminProductListAjax()
         {
+            IQueryable<Product> Products = productService.GetAll();
 
+            return View();
         }
     }
 }

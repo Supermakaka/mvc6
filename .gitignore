@@ -213,3 +213,5 @@ ModelManifest.xml
 artifacts
 /src/artifacts
 /src/WebSite/bower_packages
+/src/WebSite/ClientSide/_references.js
+/src/WebSite/ClientSide/_references.js
