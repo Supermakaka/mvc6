@@ -19,7 +19,8 @@ namespace WebSite.ViewModels.Admin
 
             configuration.CreateMap<User, UserListDatatableViewModel>()
                 .ForMember(d => d.CreateDate, o => o.ResolveUsing<DateToFormattedStringResolver>().FromMember(s => s.CreateDate)) 
-                .ForMember(d => d.Role, o => o.ResolveUsing<UserRoleListToStringResolver>().FromMember(s => s));
+                .ForMember(d => d.Role, o => o.ResolveUsing<UserRoleListToStringResolver>().FromMember(s => s))
+                .IgnoreAllNonExisting();
         }
     }
 }

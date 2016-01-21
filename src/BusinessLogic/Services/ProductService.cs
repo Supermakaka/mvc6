@@ -34,9 +34,12 @@ namespace BusinessLogic.Services
             return dataContext.ProductSubCategories.Where(s => !s.Deleted);
         }
 
-        public IQueryable<ProductSubCategory> GetSubCategoriesByCategoryId(int productSubcategoryId)
+        public IQueryable<ProductSubCategory> GetSubCategoriesByCategoryId(int? productSubcategoryId)
         {
-            return dataContext.ProductSubCategories.Where(s => s.ProductCategoryId == productSubcategoryId && !s.Deleted);
+            if(productSubcategoryId.HasValue)
+                return dataContext.ProductSubCategories.Where(s => s.ProductCategoryId == productSubcategoryId && !s.Deleted);
+
+            return new List<ProductSubCategory>().AsQueryable<ProductSubCategory>();
         }
 
         #endregion
@@ -48,5 +51,5 @@ public interface IProductService : IService<Product>
     IQueryable<Product> GetAllNotDeleted();
     IQueryable<ProductCategory> GetAllProductCategories();
     IQueryable<ProductSubCategory> GetAllProductSubCategories();
-    IQueryable<ProductSubCategory> GetSubCategoriesByCategoryId(int productSubcategoryId);
+    IQueryable<ProductSubCategory> GetSubCategoriesByCategoryId(int? productSubcategoryId);
 }

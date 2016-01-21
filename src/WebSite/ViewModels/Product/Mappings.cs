@@ -17,6 +17,7 @@ namespace WebSite.ViewModels.Product
                 .ForMember(d => d.CreateDate, o => o.ResolveUsing<DateToFormattedStringResolver>().FromMember(s => s.CreateDate))
                 .ForMember(d => d.ProductCategoryName, o => o.MapFrom(s => s.ProductSubCategory.ProductCategory.Name))
                 .ForMember(d => d.ProductSubCategoryName, o => o.MapFrom(s => s.ProductSubCategory.Name))
+                .ForMember(d => d.Count, o => o.MapFrom(s => s.ItemsCount))
                 .IgnoreAllNonExisting();
         }
     }

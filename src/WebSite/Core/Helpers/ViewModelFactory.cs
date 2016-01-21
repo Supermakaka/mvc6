@@ -18,9 +18,12 @@ namespace WebSite.Core.Helpers
 
         public AdminProductListViewModel InitAdminProductListViewModel()
         {
-            IQueryable<ProductCategory> ProductCategories = productService.GetAllProductCategories();
+            IQueryable<ProductCategory> productCategories = productService.GetAllProductCategories();
 
-            return new AdminProductListViewModel(productService.GetAllProductCategories(), productService.GetSubCategoriesByCategoryId(ProductCategories.FirstOrDefault().Id));
+            if (productCategories.Any())
+                return new AdminProductListViewModel(productCategories, productService.GetSubCategoriesByCategoryId(productCategories.FirstOrDefault().Id));
+            
+            return new AdminProductListViewModel(new List<ProductCategory>().AsQueryable(), new List<ProductSubCategory>().AsQueryable());
         }
     }
 

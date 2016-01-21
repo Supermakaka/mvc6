@@ -13,6 +13,10 @@ namespace WebSite.ViewModels.Product
 
         public string Price { get; set; }
 
+        public bool Visable { get; set; }
+
+        public int Count { get; set; }
+
         public string CreateDate { get; set; }
 
         public string ProductCategoryName { get; set; }

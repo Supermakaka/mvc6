@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <table id="user-list" class="table table-striped">
+    <table id="product-list" class="table table-striped">
         <thead>
             <tr>
                 <th>#</th>
@@ -41,18 +41,18 @@
 
 @section Styles
 {
-    <link rel="stylesheet" webpack-dev-server-href-include="/build/projectList.css" />
+    <link rel="stylesheet" webpack-dev-server-href-include="/build/productList.css" />
 }
 
 @section Scripts
 {
-    <script webpack-dev-server-src-include="/build/projectList.js" asp-file-version="true"></script>
+    <script webpack-dev-server-src-include="/build/productList.js" asp-file-version="true"></script>
 
     <script type="text/javascript">
 
         $(document).ready(function () {
 
-            userList.onReady($('#project-list'));
+            productList.onReady($('#product-list'));
 
         });
 

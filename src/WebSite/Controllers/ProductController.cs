@@ -1,5 +1,9 @@
-﻿using BusinessLogic.Models;
+﻿using AutoMapper;
+using BusinessLogic.Models;
 using BusinessLogic.Services;
+using DataTables.AspNet.AspNet5;
+using DataTables.AspNet.AspNet5.Extensions.Linq;
+using DataTables.AspNet.Core;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using System;
@@ -28,11 +32,31 @@ namespace WebSite.Controllers
             return View(viewModelFactory.InitAdminProductListViewModel());
         }
 
-        public IActionResult AdminProductListAjax()
+        public IActionResult AdminProductListAjax(IDataTablesRequest request)
         {
-            IQueryable<Product> Products = productService.GetAll();
+            IQueryable<Product> products = productService.GetAllNotDeleted();
 
-            return View();
+            var res = request.ApplyToQuery(products, opt => opt
+                .ForColumn("Name")
+                    .EnableGlobalSearch()
+                .ForColumn("Price")
+                    .EnableGlobalSearch()
+                .ForColumn("Count")
+                    .EnableGlobalSearch()
+                    .MapToProperty(s => s.ItemsCount)
+                .ForColumn("ProductCategoryName")
+                    .EnableGlobalSearch()
+                    .MapToProperty(s => s.ProductSubCategory.ProductCategory.Name)
+                .ForColumn("ProductSubCategoryName")
+                    .EnableGlobalSearch()
+                    .MapToProperty(s => s.ProductSubCategory.Name)
+            );
+
+            var model = Mapper.Map<IEnumerable<Product>, IEnumerable<AdminProductListDatatableViewModel>>(res.QueryFiltered);
+
+            var response = DataTablesResponse.Create(request, res.TotalRecords, res.TotalRecordsFiltered, model);
+
+            return new DataTablesJsonResult(response, true);
         }
     }
 }

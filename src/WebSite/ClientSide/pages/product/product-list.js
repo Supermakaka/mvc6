@@ -7,8 +7,8 @@ require('bootstrap-datepicker');
 require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.css');
 
 var moment = require('moment');
-var actionsColumnTemplate = require('./user-list-column-actions.hbs');
-var enabledColumnTemplate = require('./user-list-column-enabled.hbs');
+var actionsColumnTemplate = require('./product-list-column-actions.hbs');
+var enabledColumnTemplate = require('./product-list-column-enabled.hbs');
 var site = require('site/site');
 
 var table;
@@ -21,12 +21,13 @@ function initTable() {
         ],
         columns: [
             { data: 'id', name: 'Id', sortable: true },
-            { data: 'email', name: 'Email', sortable: true },
-            { data: 'firstName', name: 'FirstName', sortable: true },
-            { data: 'lastName', name: 'LastName', sortable: true },
-            { data: 'role', name: 'Role', sortable: false },
+            { data: 'name', name: 'Name', sortable: true },
+            { data: 'Price', name: 'Price', sortable: true },
+            { data: 'count', name: 'Count', sortable: true },
+            { data: 'productCategoryName', name: 'ProductCategoryName', sortable: false },
+            { data: 'productSubCategoryName', name: 'ProductSubCategoryName', sortable: true },
             {
-                data: 'disabled', name: 'Disabled', sortable: true,
+                data: 'visible', name: 'Visible', sortable: true,
                 render: function (data, type, full, meta) {
                     return enabledColumnTemplate({ disabled: data });
                 }
