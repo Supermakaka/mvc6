@@ -7,31 +7,52 @@
 <div class="page-header page-header-with-actions">
     <h1 class="pull-left">Products</h1>
     <div class="actions pull-right">
-        <button type="button" class="btn btn-primary" id="btn-user-create"><i class="oi oi-plus"></i> New user</button>
+        <button type="button" class="btn btn-primary" id="btn-user-create"><i class="oi oi-plus"></i> New product</button>
     </div>
 </div>
 
 <div data-table-with-filters>
     <div class="dt-filters">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-3">
                 <div class="form-group">
-                    <label for="name-filter">Product Category</label>
+                    <label for="name-filter">Category</label>
+                    <select class="form-control input-sm" data-filter data-column-name="ProductCategoryName">
+                        <option disabled>Category</option>
+                        @foreach (SelectListItem item in Model.ProductCategories)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label for="name-filter">Sub Category</label>
+                    <input class="form-control input-sm" type="text" placeholder="Text" data-filter data-column-name="Id" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="name-filter">Seach</label>
                     <input class="form-control input-sm" type="text" placeholder="Text" data-filter />
                 </div>
             </div>
+        </div>
+        <div class="row">
+
         </div>
     </div>
     <table id="product-list" class="table table-striped">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Company</th>
-                <th>Email</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Role</th>
-                <th>Enabled</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Count</th>
+                <th>Category Name</th>
+                <th>SubCategory Name</th>
+                <th>Visible</th>
                 <th>Create Date</th>
                 <th>Actions</th>
             </tr>

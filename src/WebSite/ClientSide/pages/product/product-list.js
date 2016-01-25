@@ -24,7 +24,7 @@ function initTable() {
             { data: 'name', name: 'Name', sortable: true },
             { data: 'Price', name: 'Price', sortable: true },
             { data: 'count', name: 'Count', sortable: true },
-            { data: 'productCategoryName', name: 'ProductCategoryName', sortable: false },
+            { data: 'productCategoryName', name: 'ProductCategoryName', sortable: true },
             { data: 'productSubCategoryName', name: 'ProductSubCategoryName', sortable: true },
             {
                 data: 'visible', name: 'Visible', sortable: true,
