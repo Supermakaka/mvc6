@@ -142,6 +142,8 @@ namespace WebSite
             services.AddScoped<IUserOrderService, UserOrderService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IViewModelFactory, ViewModelFactory>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
+            services.AddScoped<IProductPropertyService, ProductPropertyService>();
 
             //AutoMapper resolvers
             services.AddTransient<UserRoleListToStringResolver>();
