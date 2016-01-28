@@ -1,0 +1,50 @@
+﻿@using BusinessLogic.Helpers
+
+@{
+    ViewBag.Title = "Product Category";
+}
+
+<div class="page-header page-header-with-actions">
+    <h1 class="pull-left">Users</h1>
+    <div class="actions pull-right">
+        <button type="button" class="btn btn-primary" id="btn-user-create"><i class="oi oi-plus"></i> New user</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#category" aria-controls="sub-category">Categories</a></li>
+            <li role="presentation"><a href="#sub-category" aria-controls="sub-category">Sub Categories</a></li>
+            <li role="presentation"><a href="#property" aria-controls="sub-category">Properties</a></li>
+            <li role="presentation"><a href="#unit" aria-controls="sub-category">Units</a></li>
+            <li role="presentation"><a href="#unit-type" aria-controls="sub-category">Unit Types</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="category">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.Category)</div>
+        <div role="tabpanel" class="tab-pane fade" id="sub-category">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.SubCategory)</div>
+        <div role="tabpanel" class="tab-pane fade" id="property">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.Property)</div>
+        <div role="tabpanel" class="tab-pane fade" id="unit">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.Category)</div>
+        <div role="tabpanel" class="tab-pane fade" id="unit-type">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.UnitType)</div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" webpack-dev-server-href-include="/build/userList.css" />
+}
+@section Scripts
+{
+    <script webpack-dev-server-src-include="/build/userList.js" asp-file-version="true"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            userList.onReady($('#user-list'));
+
+        });
+
+    </script>
+}

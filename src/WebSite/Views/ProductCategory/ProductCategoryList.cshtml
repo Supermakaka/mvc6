@@ -1,0 +1,61 @@
+﻿<div data-table-with-filters>
+    <div class="dt-filters">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="name-filter">Search</label>
+                    <input class="form-control input-sm" type="text" placeholder="Text" data-filter />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label for="name-filter">Id</label>
+                    <input class="form-control input-sm" type="text" placeholder="Id" data-filter data-column-name="Id" />
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label for="name-filter">Enabled</label>
+                    <select class="form-control input-sm" data-filter data-column-name="Disabled">
+                        <option></option>
+                        <option value="false">Yes</option>
+                        <option value="true">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label for="name-filter">Role</label>
+                    <select class="form-control input-sm" data-filter data-column-name="Role">
+                        @foreach (var role in Model.Roles)
+                        {
+                            <option value="@role.Value">@role.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label for="name-filter">Create Date</label>
+                    <input id="create-date-filter" class="form-control input-sm" type="text" placeholder="Create Date" data-filter data-column-name="CreateDate" data-apply-on-typing="false" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <table id="user-list" class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role</th>
+                <th>Enabled</th>
+                <th>Create Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+</div>
