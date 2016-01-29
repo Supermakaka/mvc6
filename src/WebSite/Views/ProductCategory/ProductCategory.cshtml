@@ -22,27 +22,27 @@
         </ul>
     </div>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active" id="category">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.Category)</div>
-        <div role="tabpanel" class="tab-pane fade" id="sub-category">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.SubCategory)</div>
-        <div role="tabpanel" class="tab-pane fade" id="property">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.Property)</div>
-        <div role="tabpanel" class="tab-pane fade" id="unit">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.Category)</div>
-        <div role="tabpanel" class="tab-pane fade" id="unit-type">@Component.Invoke("ProductCategoriesTableViewComponent", Constants.ProductComponentsEnum.UnitType)</div>
+        <div role="tabpanel" class="tab-pane fade in active" id="category">@Html.Partial("~/Views/ProductCategory/PartialViews/Tables/ProductCategoryList.cshtml")</div>
+        <div role="tabpanel" class="tab-pane fade" id="sub-category">@Html.Partial("~/Views/ProductCategory/PartialViews/Tables/ProductSubCategoryList.cshtml")</div>
+        <div role="tabpanel" class="tab-pane fade" id="property">@Html.Partial("~/Views/ProductCategory/PartialViews/Tables/ProductPropertyList.cshtml")</div>
+        <div role="tabpanel" class="tab-pane fade" id="unit">@Html.Partial("~/Views/ProductCategory/PartialViews/Tables/UnitList.cshtml")</div>
+        <div role="tabpanel" class="tab-pane fade" id="unit-type">@Html.Partial("~/Views/ProductCategory/PartialViews/Tables/UnitTypeList.cshtml")</div>
     </div>
 </div>
 
 @section Styles
 {
-    <link rel="stylesheet" webpack-dev-server-href-include="/build/userList.css" />
+    <link rel="stylesheet" webpack-dev-server-href-include="/build/productCategoryList.css" />
 }
 @section Scripts
 {
-    <script webpack-dev-server-src-include="/build/userList.js" asp-file-version="true"></script>
+    <script webpack-dev-server-src-include="/build/productCategoryList.js" asp-file-version="true"></script>
 
     <script type="text/javascript">
 
         $(document).ready(function () {
 
-            userList.onReady($('#user-list'));
+            userList.onReady($('#product-category-list'));
 
         });
 

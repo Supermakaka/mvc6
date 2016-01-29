@@ -15,8 +15,8 @@ namespace WebSite.ViewModels.Product
 
         public AdminProductListViewModel(IQueryable<ProductCategory> productCategories, IQueryable<ProductSubCategory> productSubCategories)
         {
-            ProductCategories = productCategories.ToSelectListItems(r => r.Name, r => r.Id, true);
-            ProductSubCategories = productCategories.ToSelectListItems(r => r.Name, r => r.Id, true);
+            ProductCategories = productCategories.ToSelectListItems(r => r.Title, r => r.Id, true);
+            ProductSubCategories = productCategories.ToSelectListItems(r => r.Title, r => r.Id, true);
         }
     }
 }

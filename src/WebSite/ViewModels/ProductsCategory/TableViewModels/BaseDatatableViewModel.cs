@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Models
+namespace WebSite.ViewModels.ProductsCategory.TableViewModels
 {
-    public class UnitType
+    public class BaseDatatableViewModel 
     {
         public int Id { get; set; }
 
@@ -13,10 +13,6 @@ namespace BusinessLogic.Models
 
         public bool Deleted { get; set; }
 
-        public DateTime CreateDate { get; set; }
-
-        public DateTime UpdateDate { get; set; }
-
-        public virtual ICollection<Unit> Units { get; set; }
+        public string CreateDate { get; set; }
     }
 }

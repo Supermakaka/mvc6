@@ -46,10 +46,10 @@ namespace WebSite.Controllers
                     .MapToProperty(s => s.ItemsCount)
                 .ForColumn("ProductCategoryName")
                     .EnableGlobalSearch()
-                    .MapToProperty(s => s.ProductSubCategory.ProductCategory.Name)
+                    .MapToProperty(s => s.ProductSubCategory.ProductCategory.Title)
                 .ForColumn("ProductSubCategoryName")
                     .EnableGlobalSearch()
-                    .MapToProperty(s => s.ProductSubCategory.Name)
+                    .MapToProperty(s => s.ProductSubCategory.Title)
             );
 
             var model = Mapper.Map<IEnumerable<Product>, IEnumerable<AdminProductListDatatableViewModel>>(res.QueryFiltered);

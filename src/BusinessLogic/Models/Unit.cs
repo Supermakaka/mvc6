@@ -12,8 +12,14 @@ namespace BusinessLogic.Models
         public string Title { get; set; }
 
         public int UnitTypeId { get; set; }
-        public virtual UnitType UnitType { get; set; } 
+        public virtual UnitType UnitType { get; set; }
 
-        public virtual ICollection<ProductProperties> ProductProperties { get; set; }
+        public bool Deleted { get; set; }
+
+        public DateTime CreateDate { get; set; }
+
+        public DateTime UpdateDate { get; set; }
+
+        public virtual ICollection<ProductProperty> ProductProperties { get; set; }
     }
 }
