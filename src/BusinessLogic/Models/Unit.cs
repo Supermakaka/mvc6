@@ -16,6 +16,8 @@ namespace BusinessLogic.Models
 
         public bool Deleted { get; set; }
 
+        public bool Enabled { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }

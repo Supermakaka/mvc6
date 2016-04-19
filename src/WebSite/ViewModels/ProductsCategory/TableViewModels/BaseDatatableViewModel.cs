@@ -11,7 +11,7 @@ namespace WebSite.ViewModels.ProductsCategory.TableViewModels
 
         public string Title { get; set; }
 
-        public bool Deleted { get; set; }
+        public bool Enabled { get; set; }
 
         public string CreateDate { get; set; }
     }

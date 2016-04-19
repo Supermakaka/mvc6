@@ -41,6 +41,8 @@ namespace WebSite.Controllers
             return View(viewModelFactory.InitAdminProductListViewModel());
         }
 
+        #region Tables
+
         public IActionResult AdminProductCategoryListAjax(IDataTablesRequest request, ProductComponentsEnum type)
         {
             DataTablesResponse response;
@@ -124,6 +126,13 @@ namespace WebSite.Controllers
                 return new DataTablesJsonResult(DataTablesResponse.Create(request, ""));
 
             return new DataTablesJsonResult(response, true);
+        }
+
+        #endregion
+
+        public IActionResult List()
+        {
+            return View();
         }
     }
 

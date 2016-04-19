@@ -9,6 +9,7 @@ module.exports = {
         common: ["site/site.js", "bootstrap/bootstrap.scss", "open-iconic/font/css/open-iconic-bootstrap.css", "./clientside/site/site.scss"],
         userList: ["./clientside/pages/admin/user-list.js"],
         productList: ["./clientside/pages/product/product-list.js"],
+        productCategoryList: ["./clientside/pages/product-category/product-category-list.js"],
     },
     output: {
         publicPath: "/build/",
@@ -24,6 +25,7 @@ module.exports = {
             { test: /clientside\\.*site\.js$/, loader: 'expose?site' },
             { test: /clientside\\.*user-list\.js$/, loader: 'expose?userList' },
             { test: /clientside\\.*product-list\.js$/, loader: 'expose?productList' },
+            { test: /clientside\\.*product-category-list\.js$/, loader: 'expose?productCategoryList' },
 
             // make jQuery module available as global variables ($ and jQuery)- to reference from HTML pages and other modules
             { test: /jquery\.js$/, loader: 'expose?$!expose?jQuery' },
